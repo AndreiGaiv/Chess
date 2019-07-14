@@ -8,9 +8,20 @@
 
 #include <iostream>
 
+#include "game.hpp"
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    std::cout << "This is initial commit\n";
+    
+    // Short demo of first to-be-supported game mode
+    NGameIO::TChessGame game(NGameIO::EGameMode::PVP, NGameIO::EStartSide::White);
+    
+    std::string message;
+    while (!game.IsGameFinished(message)) {
+        std::string command;
+        std::cin >> command;
+        game.HandleCommand(command);
+    }
+    std::cout << message << std::endl;
+    
     return 0;
 }
